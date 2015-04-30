@@ -1,0 +1,86 @@
+{% extends "index.html" %}
+
+{% load staticfiles %}
+
+{% block head %}
+<!-- jQuery -->
+    <script src={% static "js/leapro-snow-home.js" %}></script>
+
+    <link href={% static "css/animations.css" %} rel="stylesheet">
+
+{% endblock %}
+
+
+{% block mycarousel %}
+
+    <script type="text/javascript">
+        var carousel = {{ carousel|safe }}
+    </script>
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li> -->
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <!-- <div class="item active"> -->
+                <!-- Set the first background image using inline CSS below. -->
+                <!-- <div class="fill" style="background-image:url({% static 'media/img/1.jpg' %});"></div>
+                <div class="carousel-caption">
+                    <h2>Caption 1</h2>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+    <script src={% static "js/home.carousel.js" %}></script>
+{% endblock %}
+
+{% block navbar %}
+
+    <li>
+        <a href="#about">About Us</a>
+    </li>
+    <li>
+        <a href="#instructors">Instructors</a>
+    </li>
+    <li>
+        <a href="#">Contact</a>
+    </li>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <hr>
+    <div class="row" id="about" style="text-align: center">
+        <div class="col-lg-12 animatedParent">
+            <h1 class="animated bounceInLeft">{{ about_page.title }}</h1>
+            <p>{{ about_page.content }}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row animatedParent" id="instructors" style="text-align: center">
+        <h1 class="col-lg-12 animated growIn">THE INSTRUCTORS</h1>
+        {% for instructor in instructors %}
+            <div class="col-lg-3">
+                <img class="img-circle" src="{{ instructor.img_head.url }}" alt="Generic placeholder image" width="140" height="140">
+                <h4>{{ instructor.name }} {{ instructor.nick_name }} </h4>
+                <h4>{{ instructor.statement }}</h4>
+            </div>
+        {% endfor %}
+    </div>
+
+    <script src={% static "js/css3-animate-it.js" %}></script>
+{% endblock %}

@@ -6,4 +6,4 @@ local_settings.py
 db.sqlite3
 leapro-snow.sublime-project
 leapro-snow.sublime-workspace
-
+leapro_snow/media/*

@@ -36,6 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'base',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,7 +49,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 )
+
+SITE_ID = 1
 
 ROOT_URLCONF = 'leapro_snow.urls'
 
@@ -88,6 +94,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "media"),
 )
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
@@ -95,6 +102,9 @@ STATIC_ROOT = 'staticfiles'
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
 )
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = '/media/'
 
 # Import all of local settings if the file exists
 try:
