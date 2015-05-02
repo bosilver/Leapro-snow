@@ -89,8 +89,8 @@ USE_TZ = True
 
 
 AWS_STORAGE_BUCKET_NAME = 'leapro-snow-academy'
-AWS_ACCESS_KEY_ID = 'AKIAII3P2WOPDHHW6EHA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ['S3_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['S3_SECRET']
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
