@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.flatpages',
     'base',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,14 +88,34 @@ USE_L10N = True
 USE_TZ = True
 
 
+AWS_STORAGE_BUCKET_NAME = 'leapro-snow-academy'
+AWS_ACCESS_KEY_ID = 'AKIAII3P2WOPDHHW6EHA'
+AWS_SECRET_ACCESS_KEY = '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'
+
+# Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+# it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+# This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+# We also use it in the next setting.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+# refers directly to STATIC_URL. So it's safest to always set it.
+# STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'util.custom_storages.StaticStorage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+# Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+# you run `collectstatic`).
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "media"),
 )
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
@@ -103,8 +124,11 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates').replace('\\', '/'),
 )
 
-MEDIA_ROOT = 'media'
-MEDIA_URL = '/media/'
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+DEFAULT_FILE_STORAGE = 'util.custom_storages.MediaStorage'
+# MEDIA_ROOT = 'media'
+# MEDIA_URL = '/media/'
 
 # Import all of local settings if the file exists
 try:

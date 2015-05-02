@@ -13,7 +13,4 @@ $(document).ready(function(){
     });
 
 
-
-    window.setup_carousel = setup_carousel;
-
 });

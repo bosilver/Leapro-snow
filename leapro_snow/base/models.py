@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models.signals import pre_save
-from util.storage import OverwriteStorage
 # Create your models here.
 
 
@@ -8,9 +6,7 @@ class Instructor(models.Model):
     """Instructor's name, nick name, head photo and one big photo for detail show"""
     name = models.CharField(max_length=50)
     nick_name = models.CharField(max_length=50)
-    img_head = models.ImageField(upload_to="insturctors", default=None, storage=OverwriteStorage())
-    img_profile = models.ImageField(upload_to="insturctors", default=None, storage=OverwriteStorage())
-    detail = models.TextField(default=None, null=True, blank=True)
+    img_head = models.ImageField(upload_to="insturctors", default=None)
     ski = models.BooleanField(default=None)
     snowboard = models.BooleanField(default=None)
 
@@ -33,11 +29,18 @@ class Instructor(models.Model):
             )
 
 class Carousel(models.Model):
-    img = models.ImageField(upload_to="carousel", storage=OverwriteStorage())
+    img = models.ImageField(upload_to="carousel")
     text = models.TextField(default=None, null=True, blank=True)
     slide_id = models.AutoField(primary_key=True)
 
     def __str__(self):
         return str(self.slide_id)
+
+    def show(self):
+        return dict(
+                id = self.slide_id,
+                url = self.img.url,
+                text = self.text
+            )
 
 
