@@ -16,79 +16,63 @@
     <script type="text/javascript">
         var carousel = {{ carousel|safe }}
     </script>
-    <!-- Full Page Image Background Carousel Header -->
-    <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li> -->
-        </ol>
+    <div class='fill'></div>
+    <div class="fill fixed-section">
+        <!-- Full Page Image Background Carousel Header -->
+        <div id="myCarousel" class="carousel slide">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li> -->
+            </ol>
 
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <!-- <div class="item active"> -->
-                <!-- Set the first background image using inline CSS below. -->
-                <!-- <div class="fill" style="background-image:url({% static 'media/img/1.jpg' %});"></div>
-                <div class="carousel-caption">
-                    <h2>Caption 1</h2>
-                </div>
-            </div> -->
+            <!-- Wrapper for Slides -->
+            <div class="carousel-inner">
+                <!-- <div class="item active"> -->
+                    <!-- Set the first background image using inline CSS below. -->
+                    <!-- <div class="fill" style="background-image:url({% static 'media/img/1.jpg' %});"></div>
+                    <div class="carousel-caption">
+                        <h2>Caption 1</h2>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+
         </div>
 
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </header>
+    </div>
     <script src={% static "js/home.carousel.js" %}></script>
 {% endblock %}
 
-{% block navbar-icon %}
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-{% endblock %}
-
-{% block navbar %}
-
-    <li>
-        <a href="#about">關於我們</a>
-    </li>
-    <li>
-        <a href="#instructors">教練介紹</a>
-    </li>
-    <li>
-        <a href="#">國際證照說明</a>
-    </li>
-
-{% endblock %}
-
-
 
 {% block content %}
-    <hr>
-    <div class="row" id="about">
-        <div class="col-lg-12 animatedParent">
-            <h1 class="animated bounceInLeft">{{ about_page.title }}</h1>
-            <p>{{ about_page.content }}</p>
+    <div class="fadein"></div>
+    <div class="container top-container fill white">
+        <div class="row text-center white" id="about">
+            <div class="col-lg-12 animatedParent">
+                <h1 class="animated bounceInLeft">{{ about_page.title }}</h1>
+                <p>{{ about_page.content }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row text-center animatedParent white" id="instructors">
+            <h1 class="col-lg-12 animated growIn">教練群</h1>
+                <div>
+                {% for instructor in instructors %}
+                    <div class="col-lg-3">
+                        <img class="img-circle" src="{{ instructor.img_head.url }}" alt="Generic placeholder image" width="140" height="140">
+                        <h4>{{ instructor.name }} {{ instructor.nick_name }} </h4>
+                        <h4>{{ instructor.statement }}</h4>
+                    </div>
+                {% endfor %}
+                </div>
         </div>
     </div>
-    <hr>
-    <div class="row animatedParent" id="instructors">
-        <h1 class="col-lg-12 animated growIn">教練群</h1>
-            <div>
-            {% for instructor in instructors %}
-                <div class="col-lg-3">
-                    <img class="img-circle" src="{{ instructor.img_head.url }}" alt="Generic placeholder image" width="140" height="140">
-                    <h4>{{ instructor.name }} {{ instructor.nick_name }} </h4>
-                    <h4>{{ instructor.statement }}</h4>
-                </div>
-            {% endfor %}
-            </div>
-    </div>
-
     <script src={% static "js/css3-animate-it.js" %}></script>
 {% endblock %}

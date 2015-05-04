@@ -10,6 +10,43 @@ body {
     text-align: center;
 }
 
-div .row {
+.text-center {
     text-align: center;
+}
+
+.fixed-section {
+    position: fixed;
+    top: 0;
+}
+
+.white {
+    background: #fff;
+}
+
+.fadein {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  top: 0px;
+  background: url(../img/fadeout.png);
+  background-repeat: repeat-x;
+}
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.profile-container {
+    margin-top: 100px;
+    min-height: 700px;
+}
+
+#profile-img {
+    width: 550px;
+    height: 550px;
 }

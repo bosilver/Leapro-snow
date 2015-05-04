@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="container profile-container white">
+        <div class="row white" id="profile">
+            <h1 class="col-lg-12 animated growIn">{{ flatpage.title }}</h1>
+
+        {{ flatpage.content }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{% load staticfiles %}
+<script src={% static "js/profile.js" %}></script>
+{% endblock %}
