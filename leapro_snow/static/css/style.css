@@ -69,3 +69,9 @@ body {
   margin-left: 0px;
   margin-right: 0px;
 }
+@media (max-width: 768px){
+    #myCarousel .item {
+      background-size: contain;
+  }
+}
+
