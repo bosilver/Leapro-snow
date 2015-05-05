@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.flatpages.models import FlatPage
 # Create your models here.
 
 
@@ -21,11 +22,18 @@ class Instructor(models.Model):
                 statement += ' & '
         if self.snowboard:
             statement += 'Snowboard'
+
+        res = FlatPage.objects.filter(title='%s %s' % (self.name,self.nick_name))
+        if res:
+            profile = res[0].get_absolute_url()
+        else:
+            profile = ''
         return dict(
                 name = self.name,
                 nick_name = self.nick_name,
                 img_head = self.img_head,
-                statement = statement
+                statement = statement,
+                profile = profile
             )
 
 class Carousel(models.Model):

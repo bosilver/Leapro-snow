@@ -1,11 +1,44 @@
 {% extends "index.html" %}
 
 {% block content %}
+    <script type="text/javascript">
+        var description = "{{ flatpage.content|safe }}"
+    </script>
     <div class="container profile-container white">
-        <div class="row white" id="profile">
+        <div class="row white" id="title">
             <h1 class="col-lg-12 animated growIn">{{ flatpage.title }}</h1>
+        </div>
 
-        {{ flatpage.content }}
+        <div>
+            <div class="col-lg-6">
+                <img id="profile-img" class="img-thumbnail" src="">
+            </div>
+
+            <div id="profile" class="col-lg-6">
+                <div class="h3">CATEGORY</div>
+                <h4>
+                    <span id="profile1" class="profile-categrory-bg"></span>
+                </h4>
+                <div class="h3">ABOUT ME</div>
+
+                <p>
+                    <strong>來自：</strong>
+                    <span id='profile2'></span>
+                </p>
+                <p>
+                    <strong>證照：</strong>
+                    <span id='profile3'></span>
+                </p>
+                <p>
+                    <strong>滑過的雪場：</strong>
+                    <pre><code id='profile4'>
+                    </code></pre>
+                </p>
+                <p>
+                    <strong>想說的話：</strong>
+                    <blockquote><p id="profile5">我想說的話</p></blockquote>
+                </p>
+            </div>
         </div>
     </div>
 {% endblock %}

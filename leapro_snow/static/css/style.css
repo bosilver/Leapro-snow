@@ -10,10 +10,6 @@ body {
     text-align: center;
 }
 
-.text-center {
-    text-align: center;
-}
-
 .fixed-section {
     position: fixed;
     top: 0;
@@ -44,9 +40,32 @@ body {
 .profile-container {
     margin-top: 100px;
     min-height: 700px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 #profile-img {
     width: 550px;
     height: 550px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav li a {
+    text-align: right;
+  }
+}
+
+#profile .head{
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#title {
+  margin-left: 0px;
+  margin-right: 0px;
 }
