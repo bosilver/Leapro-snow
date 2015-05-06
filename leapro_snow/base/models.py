@@ -10,6 +10,14 @@ class Instructor(models.Model):
     img_head = models.ImageField(upload_to="insturctors", default=None)
     ski = models.BooleanField(default=None)
     snowboard = models.BooleanField(default=None)
+    img_profile = models.ImageField(upload_to="insturctors", default=None, null=True, blank=True)
+    location = models.CharField(max_length=200, default=None, null=True, blank=True)
+    cert = models.TextField(default=None, null=True, blank=True)
+    ski_field = models.TextField(default=None, null=True, blank=True)
+    mostlike_ski_field = models.CharField(max_length=200, default=None, null=True, blank=True)
+    want_to_say = models.TextField(default=None, null=True, blank=True)
+    vedio = models.TextField(default=None, null=True, blank=True)
+    page_name = models.CharField(max_length=50, default=None, null=True)
 
     def __unicode__(self):
         return self.nick_name
@@ -23,18 +31,28 @@ class Instructor(models.Model):
         if self.snowboard:
             statement += 'Snowboard'
 
-        res = FlatPage.objects.filter(title='%s %s' % (self.name,self.nick_name))
-        if res:
-            profile = res[0].get_absolute_url()
-        else:
-            profile = ''
         return dict(
                 name = self.name,
                 nick_name = self.nick_name,
                 img_head = self.img_head,
                 statement = statement,
-                profile = profile
+                page_name = self.page_name
             )
+
+    def profile(self):
+
+        base_dict = self.show()
+        base_dict.update(dict(
+                img_profile = self.img_profile,
+                location = self.location,
+                cert = self.cert,
+                ski_field = self.ski_field,
+                mostlike_ski_field = self.mostlike_ski_field,
+                want_to_say = self.want_to_say,
+                vedio = self.vedio
+            ))
+        return base_dict
+
 
 class Carousel(models.Model):
     img = models.ImageField(upload_to="carousel")

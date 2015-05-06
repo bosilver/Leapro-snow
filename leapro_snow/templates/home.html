@@ -7,6 +7,8 @@
     <script src={% static "js/leapro-snow-home.js" %}></script>
 
     <link href={% static "css/animations.css" %} rel="stylesheet">
+    <!-- Carousel -->
+    <link rel="stylesheet" href={% static "css/jquery.carousel.fullscreen.css" %}>
 
 {% endblock %}
 
@@ -16,10 +18,9 @@
     <script type="text/javascript">
         var carousel = {{ carousel|safe }}
     </script>
-    <div class='fill'></div>
-    <div class="fill fixed-section">
         <!-- Full Page Image Background Carousel Header -->
-        <div id="myCarousel" class="carousel slide">
+        <div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- <div id="myCarousel" class="carousel slide"> -->
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <!-- <li data-target="#myCarousel" data-slide-to="0" class="active"></li> -->
@@ -46,28 +47,28 @@
 
         </div>
 
-    </div>
     <script src={% static "js/home.carousel.js" %}></script>
+    <script src={% static "js/bootstrap.min.carousel.support.js" %}></script>
 {% endblock %}
 
 
 {% block content %}
     <div class="fadein"></div>
     <div class="container white">
-        <div class="row text-center white" id="about">
+        <div class="text-center white" id="about">
             <div class="col-sm-12 animatedParent">
                 <h1 class="animated bounceInLeft">{{ about_page.title }}</h1>
                 <p>{{ about_page.content }}</p>
             </div>
         </div>
         <hr>
-        <div class="row text-center animatedParent white" id="instructors">
+        <div class="text-center animatedParent white" id="instructors">
             <h1 class="col-sm-12 animated growIn">教練群</h1>
                 <div>
                 {% for instructor in instructors %}
                     <div class="col-sm-3">
                         <div class="profile-img">
-                            <a href="{{ instructor.profile }}">
+                            <a href="{% url 'instructor_profile' pg_name=instructor.page_name %}">
                                 <span class="instructor-img">
                                     <img class="img-circle" src="{{ instructor.img_head.url }}" alt="Generic placeholder image" width="140" height="140">
                                 </span>
@@ -75,7 +76,7 @@
                         </div>
                         <div class="profile-description">
                             <h4 class="profile-title">
-                                <a href="{{ instructor.profile }}">{{ instructor.name }} {{ instructor.nick_name }}</a>
+                                <a href="{% url 'instructor_profile' pg_name=instructor.page_name %}">{{ instructor.name }} {{ instructor.nick_name }}</a>
                             </h4>
                             <h4 class="profile-category">{{ instructor.statement }}</h4>
                         </div>

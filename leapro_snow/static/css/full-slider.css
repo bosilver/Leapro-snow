@@ -22,6 +22,17 @@ body {
 
 /* Background images are set within the HTML using inline CSS, not here */
 
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -99;
+    margin: 0;
+    padding: 0;
+}
+
 .fill {
     width: 100%;
     height: 100%;
@@ -33,11 +44,4 @@ body {
     position: relative;
 }
 
-footer {
-    background-color: #222;
-    color: #9d9d9d;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    text-align: center;
-}
+

@@ -1,42 +1,52 @@
 {% extends "index.html" %}
+{% load staticfiles %}
+{% block head %}
+    <link href={% static "css/animations.css" %} rel="stylesheet">
+{% endblock %}
 
 {% block content %}
     <script type="text/javascript">
-        var description = "{{ flatpage.content|safe }}"
+        var video = "{{ instructor.video|safe }}"
+        var want_to_say = "{{ instructor.want_to_say }}"
+        var cert = "{{ instructor.cert }}"
     </script>
     <div class="container profile-container white">
-        <div class="row white" id="title">
-            <h1 class="col-lg-12 animated growIn">{{ flatpage.title }}</h1>
+        <div class="row white animatedParent" id="title">
+            <h1 class="col-lg-12 animated growIn">{{ instructor.name }} {{ instructor.nick_name }}</h1>
         </div>
 
         <div>
             <div class="col-lg-6">
-                <img id="profile-img" class="img-thumbnail" src="">
+                <img id="profile-img" class="img-thumbnail" src="{{ instructor.img_profile.url }}">
             </div>
 
             <div id="profile" class="col-lg-6">
                 <div class="h3">CATEGORY</div>
                 <h4>
-                    <span id="profile1" class="profile-categrory-bg"></span>
+                    <span id="categrory" class="profile-categrory-bg">{{ instructor.statement }}教練</span>
                 </h4>
                 <div class="h3">ABOUT ME</div>
 
                 <p>
                     <strong>來自：</strong>
-                    <span id='profile2'></span>
+                    <span id='location'>{{ instructor.location }}</span>
                 </p>
                 <p>
                     <strong>證照：</strong>
-                    <span id='profile3'></span>
+                    <span id='cert'></span>
+                </p>
+                <p>
+                    <strong>最喜愛的雪場：</strong>
+                    <span id='mostlike_ski_field'>{{ instructor.mostlike_ski_field }}</span>
                 </p>
                 <p>
                     <strong>滑過的雪場：</strong>
-                    <pre><code id='profile4'>
-                    </code></pre>
+                    <pre><code id='ski_field'>{{ instructor.ski_field }}</code></pre>
                 </p>
                 <p>
                     <strong>想說的話：</strong>
-                    <blockquote><p id="profile5">我想說的話</p></blockquote>
+                    <blockquote id="want_to_say">
+                    </blockquote>
                 </p>
             </div>
         </div>
@@ -46,4 +56,5 @@
 {% block script %}
 {% load staticfiles %}
 <script src={% static "js/profile.js" %}></script>
+<script src={% static "js/css3-animate-it.js" %}></script>
 {% endblock %}

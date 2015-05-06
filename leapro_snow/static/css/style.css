@@ -2,7 +2,7 @@
 
 
 body {
-    position: relative;
+    overflow-x:hidden;
 }
 
 
@@ -44,11 +44,6 @@ body {
     padding-right: 30px;
 }
 
-#profile-img {
-    width: 550px;
-    height: 550px;
-}
-
 .container {
   position: relative;
   width: 100%;
@@ -68,4 +63,26 @@ body {
 #title {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+#profile-img {
+  width: 550px;
+  height: 550px;
+}
+
+@media (max-width: 480px) {
+    #profile-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+footer {
+    background-color: #222;
+    color: #9d9d9d;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: relative;
 }

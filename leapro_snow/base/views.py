@@ -38,3 +38,14 @@ def home(request):
                   'home.html',
                   {'instructors': instructors, 'carousel': json.dumps(carousel),
                   'about_page': about_page})
+
+def instructor_profile(request, pg_name):
+
+    instructor = Instructor.objects.get(page_name=pg_name).profile()
+
+    log.info(instructor)
+    return render(request,
+                  'instructor.html',
+                  {'instructor': instructor})
+
+

@@ -2,16 +2,13 @@
 
 
 $(document).ready(function(){
-
-    $('img #profile-img').css({'width':'550px', 'heigh':'550px'})
-
-    var profile = description.split(';')
-    for (var i = 0; i < profile.length; i++) {
-        if (i == 0) {
-            $('#profile-img').attr('src', profile[i])
-        }
-        else {
-            $('#profile'+i).text(profile[i])
-        };
+    lines = want_to_say.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        $('#want_to_say').append("<p>"+ lines[i] + "</p>")
     };
+    lines = cert.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+        $('#cert').append("<p>"+ lines[i] + "</p>")
+    };
+
 });
