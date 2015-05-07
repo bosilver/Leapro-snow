@@ -40,5 +40,6 @@ jQuery(document).ready(function() {
 
     $(window).on('resize', function() {
         $('.carousel').css({'width': $(window).outerWidth(), 'height': $(window).outerHeight()});
+        $('.carousel .item').css({'position': 'fixed', 'width': $(window).outerWidth(), 'height': $(window).outerHeight()})
     });
 });
