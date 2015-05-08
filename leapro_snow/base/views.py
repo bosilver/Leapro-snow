@@ -28,7 +28,7 @@ def home(request):
     for item in car:
         carousel.append(item.show())
 
-    ins = Instructor.objects.all()
+    ins = Instructor.objects.order_by('name')
     instructors = list()
     for instructor in ins:
         instructors.append(instructor.show())
