@@ -80,3 +80,17 @@ footer {
     text-align: center;
     position: relative;
 }
+
+#cert {
+  display: block;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 1 em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+.profile-categrory-bg {
+  margin-left: 40px;
+}

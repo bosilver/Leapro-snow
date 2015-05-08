@@ -8,7 +8,7 @@ $(document).ready(function(){
     };
     lines = cert.split('\n');
     for (var i = 0; i < lines.length; i++) {
-        $('#cert').append("<p>"+ lines[i] + "</p>")
+        $('#cert').append("<li>"+ lines[i] + "</li>")
     };
 
 });
