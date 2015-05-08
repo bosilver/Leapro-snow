@@ -56,14 +56,16 @@
     <div class="fadein"></div>
     <div class="container white">
         <div class="text-center white" id="about">
-            <div class="col-sm-12 animatedParent">
-                <h1 class="animated bounceInLeft">{{ about_page.title }}</h1>
+            <div class="col-sm-12">
+                <h1>{{ about_page.title }}</h1>
                 <p>{{ about_page.content }}</p>
             </div>
         </div>
         <hr>
-        <div class="text-center animatedParent white" id="instructors">
-            <h1 class="col-sm-12 animated growIn">教練群</h1>
+        <div class="text-center white" id="instructors">
+            <div class="col-sm-12">
+                <h1 >教練群</h1>
+            </div>
                 <div>
                 {% for instructor in instructors %}
                     <div class="col-sm-3">
@@ -85,5 +87,4 @@
                 </div>
         </div>
     </div>
-    <script src={% static "js/css3-animate-it.js" %}></script>
 {% endblock %}
