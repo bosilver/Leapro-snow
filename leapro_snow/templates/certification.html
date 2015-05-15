@@ -2,15 +2,36 @@
 {% load staticfiles %}
 {% block head %}
     <link href={% static "css/animations.css" %} rel="stylesheet">
+    <script src={% static "js/leapro-snow-cert.js" %}></script>
 {% endblock %}
 
 
 {% block content %}
 
-<div class="container page-container white">
+<div class="container page-container white text-center">
 
+    <div class="col-sm-12">
+        <h1 >國際證照介紹</h1>
+    </div>
+    <div class="center round-borad">
+    {% for cert in certs %}
+        <div class="col-sm-3" style="height: 200px; white-space: nowrap;">
+            <span class="helper"></span>
+            <a href="#content" name="{{ cert.name }}">
+                    <img style="width: 100%;" src="{{ cert.logo.url }}" alt="Generic placeholder image">
+            </a>
+        </div>
+    {% endfor %}
+    </div>
 
-
+    <div class="col-sm-12" id="content" style="padding-top: 50px">
+        內容在這邊
+        {% for cert in certs %}
+            <div class="hidden" id="{{ cert.name }}">
+                {{ cert.content }}
+            </div>
+        {% endfor %}
+    </div>
 
 </div>
 

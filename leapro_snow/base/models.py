@@ -70,3 +70,18 @@ class Carousel(models.Model):
             )
 
 
+class Certification(models.Model):
+    """docstring for certification"""
+    name = models.CharField(max_length=10)
+    logo = models.ImageField(upload_to="logo")
+    content = models.TextField(default=None, null=True, blank=True)
+    ski = models.BooleanField(default=True)
+    snowboard = models.BooleanField(default=True)
+    country = models.CharField(max_length=20, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
+
+
+
+

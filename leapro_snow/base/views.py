@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from base.models import Instructor, Carousel
+from base.models import Instructor, Carousel, Certification
 from django.contrib.flatpages.models import FlatPage
 import json
 # Create your views here.
@@ -47,5 +47,14 @@ def instructor_profile(request, pg_name):
     return render(request,
                   'instructor.html',
                   {'instructor': instructor})
+
+
+def certification_page(request):
+
+    certs = Certification.objects.order_by('country')
+
+    return render(request,
+                  'certification.html',
+                  {'certs': certs})
 
 

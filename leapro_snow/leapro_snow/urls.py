@@ -11,5 +11,7 @@ urlpatterns = patterns('',
     url(r'^$', 'base.views.home'),
     url(r'^instructors/(?P<pg_name>[\w-]+)/$', 'base.views.instructor_profile',
         name='instructor_profile'),
+    url(r'^certification$', 'base.views.certification_page',
+        name='certification'),
 )
 
