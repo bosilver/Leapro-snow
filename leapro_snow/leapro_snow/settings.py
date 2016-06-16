@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.flatpages',
     'base',
+    'django_medusa',
     # 'storages',
 )
 
@@ -67,12 +68,12 @@ WSGI_APPLICATION = 'leapro_snow.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -110,11 +111,7 @@ STATICFILES_LOCATION = 'static'
 # you run `collectstatic`).
 # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-if DEBUG:
-    STATIC_URL = '/static/'
-else:
-    STATICFILES_STORAGE = 'util.custom_storages.StaticStorage'
-    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = (
@@ -139,14 +136,14 @@ TEMPLATES = [
     },
 ]
 
-# MEDIAFILES_LOCATION = 'media'
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-# DEFAULT_FILE_STORAGE = 'util.custom_storages.MediaStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Import all of local settings if the file exists
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+MEDUSA_RENDERER_CLASS = "django_medusa.renderers.DiskStaticSiteRenderer"
+MEDUSA_MULTITHREAD = True
+MEDUSA_DEPLOY_DIR = os.path.abspath(os.path.join(
+    BASE_DIR,
+    'build',
+))
+MEDUSA_COLLECT_STATIC = True
+

@@ -43,7 +43,7 @@ def instructor_profile(request, pg_name):
 
     instructor = Instructor.objects.get(page_name=pg_name).profile()
 
-    log.info(instructor)
+    # log.info(instructor)
     return render(request,
                   'instructor.html',
                   {'instructor': instructor})
