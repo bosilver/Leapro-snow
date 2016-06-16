@@ -1,0 +1,109 @@
+
+
+#coaches .col-lg-3 {
+    text-align: center;
+}
+
+.fixed-section {
+    position: fixed;
+    top: 0;
+}
+
+.white {
+    background: #fff;
+}
+
+.fadein {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  top: 0px;
+  background: url(../img/fadeout.png);
+  background-repeat: repeat-x;
+}
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.page-container {
+    margin-top: 100px;
+    min-height: 700px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav li a {
+    text-align: right;
+  }
+}
+
+#profile .head{
+  padding-top: 10px;
+  font-size: 20px;
+}
+
+#title {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#profile-img {
+  width: 550px;
+  height: 550px;
+}
+
+@media (max-width: 480px) {
+    #profile-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+footer {
+    background-color: #222;
+    color: #9d9d9d;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+#cert {
+  display: block;
+  list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 1 em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+.profile-categrory-bg {
+  margin-left: 40px;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
